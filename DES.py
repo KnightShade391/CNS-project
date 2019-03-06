@@ -1,4 +1,5 @@
 from DESKey import generateKeys
+from conversion import convertToAscii, convertToBinary
 
 def initialPermutation(text):
     ip = [
@@ -160,8 +161,9 @@ def applyDES(text, key, action):
     print("-" * 100)
     return res
 
-pt = "0000000100100011010001010110011110001001101010111100110111101111"
-x = "1100 1100 0000 0000 1100 1100 1111 1111 1111 0000 1010 1010 1111 0000 1010 1010".replace(" ", "")
-ct = "0100101011010100001000111010100000001111000001010111100000001010"
-key = "0001001100110100010101110111100110011011101111001101111111110001"
-applyDES(applyDES(pt, key, "ENCRYPT"), key, "DECRYPT")
+# pt = convertToBinary("plaintxt")
+# key = convertToBinary("mydeskey")
+# c = applyDES(pt, key, "ENCRYPT")
+# print(convertToAscii([c]))
+# d = applyDES(c, key, "DECRYPT")
+# print(convertToAscii([d]))
