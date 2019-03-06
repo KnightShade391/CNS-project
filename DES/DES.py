@@ -105,13 +105,20 @@ def dBox(text):
     return "".join([text[i-1] for i in dbox])
 
 def fiestalRound(text, key):
+    # split the plaintext into two halves
     left = text[:32]
     right = text[32:]
+    # apply expansion
     exp = expansion(right)
+    # xor the expansion result with the key
     xor = bin(int(exp, 2) ^ int(key, 2))[2:].zfill(48)
+    # apply sbox
     sboxRes = sBoxes(xor)
+    # apply dbox
     dboxRes = dBox(sboxRes)
+    # xor dbox result with the left half
     xor = bin(int(left, 2) ^ int(dboxRes, 2))[2:].zfill(32)
+    # return the swapped result
     return (right + xor)
 
 def finalPermutation(text):
@@ -129,18 +136,25 @@ def finalPermutation(text):
     return "".join([text[i-1] for i in fp])
 
 def applyDES(text, key, action):
+    # generate the 16 keys
     keys = generateKeys(key)
     if(action == "DECRYPT"):
         keys = keys[::-1]
 
+    # apply initial permutation
     res = initialPermutation(text)
     print("-" * 100, "\nAfter Initial Permutation:", res)
     for i in range(15):
+        # apply fiestal round for 15 times
         res = fiestalRound(res, keys[i])
         print("-" * 100, "\nAfter round", i + 1, ":", res)
+    
+    # apply fiestal round 16th time
     res = fiestalRound(res, keys[15])
+    # cancel the swapped result
     res = res[32:] + res[:32]
     print("-" * 100, "\nAfter round16 :", res)
+    # apply final permutation
     res = finalPermutation(res)
     print("-" * 100, "\nAfter Final Permutation:", res)
     print("-" * 100)
