@@ -142,6 +142,7 @@ def applyDES(text, key, action):
     if(action == "DECRYPT"):
         keys = keys[::-1]
 
+    print("For", convertToAscii([text]))
     # apply initial permutation
     res = initialPermutation(text)
     print("-" * 100, "\nAfter Initial Permutation:", res)
@@ -158,7 +159,7 @@ def applyDES(text, key, action):
     # apply final permutation
     res = finalPermutation(res)
     print("-" * 100, "\nAfter Final Permutation:", res)
-    print("-" * 100)
+    print("-" * 100, "\n")
     return res
 
 # pt = convertToBinary("plaintxt")
