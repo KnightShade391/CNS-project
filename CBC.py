@@ -1,13 +1,7 @@
 from DES import applyDES
 
-pt = "0000000100100011010001010110011110001001101010111100110111101111"
-x = "1100 1100 0000 0000 1100 1100 1111 1111 1111 0000 1010 1010 1111 0000 1010 1010".replace(" ", "")
-k1 = "000110 110000 001011 101111 111111 000111 000001 110010 ".replace(" ", "")
-ct = "0100101011010100001000111010100000001111000001010111100000001010"
-key = "0001001100110100010101110111100110011011101111001101111111110001"
 ENCRYPT = "ENCRYPT"
 DECRYPT = "DECRYPT"
-# applyDES(applyDES(pt, "00011010", "ENCRYPT"), "010101", "DECRYPT")
 
 def convertToBinary(text):
     textToBin = ""
@@ -50,26 +44,13 @@ def applyCBC(text, DESKey1, DESKey2, CBCKey, mode):
     firstHalf, lastHalf = CBCRound(firstHalf, lastHalf, textIntoParts[0][:64], textIntoParts[0][64:], DESKey1, DESKey2)
     ciphers = [firstHalf + lastHalf]
 
-    if(mode == ENCRYPT):
-        for i in range(1, len(textIntoParts)):
-            # apply the round function using crossed feedback of the previous round
+    for i in range(1, len(textIntoParts)):
+        # apply the round function using crossed feedback of the previous round
+        if(mode == ENCRYPT):
             firstHalf, lastHalf = CBCRound(lastHalf, firstHalf, textIntoParts[i][:64], textIntoParts[i][64:], DESKey1, DESKey2)
-            ciphers.append(firstHalf + lastHalf)
-    else:
-        for i in range(1, len(textIntoParts)):
-            # apply the round function using crossed feedback of the previous round
+        else:
             firstHalf, lastHalf = CBCRound(textIntoParts[i - 1][64:], textIntoParts[i - 1][:64], textIntoParts[i][:64], textIntoParts[i][64:], DESKey1, DESKey2)
-            ciphers.append(firstHalf + lastHalf)
+        ciphers.append(firstHalf + lastHalf)
     
     # convert the binary back to characters
     return convertToAscii(ciphers)
-
-pltxt = "plaintxtplaintxtplaintxtplaintxttxtnialptxtnialp"
-cbckey = "myciphermycipher"
-deskey1 = "mydeskey"
-deskey2 = "mydeskey"
-
-c = applyCBC(pltxt, deskey1, deskey2, cbckey, ENCRYPT)
-d = applyCBC(c, deskey1, deskey2, cbckey, DECRYPT)
-
-print("Cipher text: " + c, "Plain text: " + d, sep = "\n")
