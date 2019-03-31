@@ -3,8 +3,8 @@ from CBC import applyCBC
 ENCRYPT = "ENCRYPT"
 DECRYPT = "DECRYPT"
 
-pltxt = "plaintxttxtnialp"
-initVect = "myciphermycipher"
+pltxt = "12345678901234567890123456789012"
+initVect = "helloworldholayo"
 deskey1 = "deskey01"
 deskey2 = "deskeymy"
 

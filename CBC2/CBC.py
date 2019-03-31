@@ -36,8 +36,8 @@ def CBCDecryptRound(firstHalfFeedback, lastHalfFeedback, firstHalfCipher, lastHa
     lastHalfRes1 = applyDES(lastHalfCipher, DESKey2, DECRYPT)
 
     # apply des for the two halves of the feedback in encryption mode
-    firstHalfRes2 = applyDES(firstHalfFeedback, DESKey1, ENCRYPT)
-    lastHalfRes2 = applyDES(lastHalfFeedback, DESKey2, ENCRYPT)
+    firstHalfRes2 = applyDES(lastHalfFeedback, DESKey1, ENCRYPT)
+    lastHalfRes2 = applyDES(firstHalfFeedback, DESKey2, ENCRYPT)
 
     # cross xor the halves the two des results
     firstHalfText = xor(firstHalfRes2, lastHalfRes1, 64)
@@ -81,7 +81,7 @@ def applyCBC(text, DESKey1, DESKey2, inititalVector, mode):
         if(mode == ENCRYPT):
             firstHalf, lastHalf = CBCEncryptRound(lastHalf, firstHalf, textIntoParts[i][:64], textIntoParts[i][64:], iv1, iv2, DESKey1, DESKey2)
         else:
-            firstHalf, lastHalf = CBCDecryptRound(textIntoParts[i - 1][64:], textIntoParts[i - 1][:64], textIntoParts[i][:64], textIntoParts[i][64:], iv1, iv2, DESKey1, DESKey2)
+            firstHalf, lastHalf = CBCDecryptRound(textIntoParts[i - 1][:64], textIntoParts[i - 1][64:], textIntoParts[i][:64], textIntoParts[i][64:], iv1, iv2, DESKey1, DESKey2)
         # add the cipher/plaintext into the list
         result.append(firstHalf + lastHalf)
 
