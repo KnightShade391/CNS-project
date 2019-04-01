@@ -28,9 +28,9 @@ def CBCEncryptRound(firstHalfFeedback, lastHalfFeedback, firstHalfText, lastHalf
 def applyCBC(text, DESKey1, DESKey2, inititalVector):
     # convert all parameters into binary
     # text = convertToBinary(text)
-    inititalVector = convertToBinary(inititalVector)
-    DESKey1 = convertToBinary(DESKey1)
-    DESKey2 = convertToBinary(DESKey2)
+    # inititalVector = convertToBinary(inititalVector)
+    # DESKey1 = convertToBinary(DESKey1)
+    # DESKey2 = convertToBinary(DESKey2)
 
     # divide the text into blocks each of size 128 bits
     textIntoParts = splitIntoParts(text, 128)

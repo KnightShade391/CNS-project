@@ -6,8 +6,8 @@ DECRYPT = "DECRYPT"
 
 def applyCBC(text, DESKey, initialVector, mode):
     # convert all parameters into binary
-    DESKey = convertToBinary(DESKey)
-    initialVector = convertToBinary(initialVector)
+    # DESKey = convertToBinary(DESKey)
+    # initialVector = convertToBinary(initialVector)
     feedback = initialVector
 
     # divide the text into blocks each of size 64 bits

@@ -3,7 +3,20 @@
 196	198	203	204	205	207	210	212	216	217	218	219	221	223	224	225	226	227	230	232	234	237	238	240	241	242	247	248	250	252	253	
 total: 31
 
----comparision between 254 0s and two 1s and with 253 0s and three 1s (2 bits change in the plaintext)---
+---comparision between 254 0s and two 1s and with 253 0s and three 1s (1 bits change in the plaintext)---
 --the bit difference---
 192	193	196	198	199	201	202	203	207	212	214	216	217	219	221	223	224	230	234	238	240	241	242	247	249	250	251	253	255	
 total: 29
+
+---comparision between 254 0s and two 1s and with 255 0s (2 bits change in the plaintext)---
+--the bit difference---
+192	195	197	198	203	204	205	208	212	213	214	216	217	222	223	225	227	229	231	232	235	237	238	239	240	241	242	243	244	246	251	254	
+total: 32
+
+---comparision between 64 0s and with 63 0s and one 1 (inititalvector) with 256 0s as plaintext (1 bit change in the inititalvector)---
+--the bit difference---
+total: 0
+
+---comparision between 64 0s and with 63 0s and one 1 (key) with 256 0s as plaintext (1 bit change in the key)---
+--the bit difference---
+total: 0
