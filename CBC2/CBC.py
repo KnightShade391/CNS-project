@@ -88,6 +88,13 @@ def applyCBC(text, DESKey1, DESKey2, inititalVector, mode):
         # add the cipher/plaintext into the list
         result.append(firstHalf + lastHalf)
 
+    if mode == DECRYPT:
+        extraChars = int(result[-1], 2)
+        result = result[:-1]
+        decryptText = convertToAscii("".join(result))
+        #print(decryptText[:-extraChars])
+        return decryptText[:-extraChars]
+    else:    
     # convert the binary back to characters
-    return convertToAscii("".join(result))
+        return convertToAscii("".join(result))
     # return result

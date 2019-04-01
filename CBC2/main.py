@@ -4,7 +4,7 @@ from utils import *
 ENCRYPT = "ENCRYPT"
 DECRYPT = "DECRYPT"
 
-pltxt = "cnsprojectcnsprojectcnsproject"
+pltxt = "cnsprojectcnsprojectcnsproject122"
 # pltxt = ("a" * 1) + ("b" * 1)
 initVect = "helloworldholayo"
 deskey1 = "deskey01"
