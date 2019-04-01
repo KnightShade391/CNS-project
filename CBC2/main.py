@@ -5,7 +5,6 @@ ENCRYPT = "ENCRYPT"
 DECRYPT = "DECRYPT"
 
 pltxt = "12345678901234567890123456789012"
-len(pltxt)
 # pltxt = ("a" * 1) + ("b" * 1)
 initVect = "helloworldholayo"
 deskey1 = "deskey01"
