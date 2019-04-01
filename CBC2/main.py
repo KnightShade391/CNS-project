@@ -4,11 +4,10 @@ from utils import *
 ENCRYPT = "ENCRYPT"
 DECRYPT = "DECRYPT"
 
-pltxt = "cnsprojectcnsprojectcnsproject122"
+pltxt = input("Enter a message: ")
 # pltxt = ("a" * 1) + ("b" * 1)
 initVect = "helloworldholayo"
-deskey1 = "deskey01"
-deskey2 = "deskeymy"
+deskey1, deskey2 = getDESKeys()
 
 c = applyCBC(pltxt, deskey1, deskey2, initVect, ENCRYPT)
 d = applyCBC(c, deskey1, deskey2, initVect, DECRYPT)

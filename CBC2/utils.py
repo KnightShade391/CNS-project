@@ -1,3 +1,6 @@
+from math import floor
+from random import random
+
 # a method to split the text into equal n parts
 def splitIntoParts(text, n):
     return [text[i:i+n] for i in range(0, len(text), n)]
@@ -32,3 +35,15 @@ def pad_chars(text):
         afterPad = text + ('x' * (16 - charsToPad))
     binaryStr = convertToBinary(afterPad) + bin(16 - charsToPad)[2:].zfill(128)
     return binaryStr
+
+# a method to return two random keys
+def getDESKeys():
+    keys = {
+        0: "mydeskey",
+        1: "desmykey",
+        2: "keykey11",
+        3: "desdes12",
+        4: "12345678",
+        5: "newdesyo"
+    }
+    return [keys[floor(random() * 10) % 6], keys[floor(random() * 10) % 6]]
