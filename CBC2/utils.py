@@ -26,9 +26,9 @@ def pad_chars(text):
     textLength = len(text)
     charsToPad = textLength % 16
     afterPad = ""
-    if text[-1] != 'x' or text[-1] != 'X':
-        afterPad = text + ('x' * (16 - charsToPad))
-    else:
+    if (text[-1] == 'x') or (text[-1] == 'X'):
         afterPad = text + ('z' * (16 - charsToPad))
+    else:
+        afterPad = text + ('x' * (16 - charsToPad))
     binaryStr = convertToBinary(afterPad) + bin(16 - charsToPad)[2:].zfill(128)
     return binaryStr
