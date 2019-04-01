@@ -1,5 +1,5 @@
 from DES import applyDES
-from utils import convertToAscii, convertToBinary, xor, splitIntoParts
+from utils import convertToAscii, convertToBinary, xor, splitIntoParts, pad_chars
 
 ENCRYPT = "ENCRYPT"
 DECRYPT = "DECRYPT"
@@ -49,7 +49,10 @@ def CBCDecryptRound(firstHalfFeedback, lastHalfFeedback, firstHalfCipher, lastHa
 # a method to apply the CBC based on the mode
 def applyCBC(text, DESKey1, DESKey2, inititalVector, mode):
     # convert all parameters into binary
-    text = convertToBinary(text)
+    if(mode == DECRYPT):
+        text = convertToBinary(text)
+    else:
+        text = pad_chars(text)
     inititalVector = convertToBinary(inititalVector)
     DESKey1 = convertToBinary(DESKey1)
     DESKey2 = convertToBinary(DESKey2)
