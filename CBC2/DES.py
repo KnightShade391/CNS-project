@@ -156,22 +156,19 @@ def applyDES(text, key, action):
     if(action == "DECRYPT"):
         keys = keys[::-1]
 
-    print("For", convertToAscii(text))
     # first perform the initial permutation
     res = initialPermutation(text)
-    print("-" * 100, "\nAfter Initial Permutation:", res)
+
     # then apply the fiestal rounds 15 times
     for i in range(15):
         res = fiestalRound(res, keys[i])
-        print("-" * 100, "\nAfter round", i + 1, ":", res)
+    
     # apply the firestal round once more
     res = fiestalRound(res, keys[15])
     # swap the result of the last fiestal round
     res = res[32:] + res[:32]
-    print("-" * 100, "\nAfter round16 :", res)
+
     # apply the final permutation
     res = finalPermutation(res)
-    print("-" * 100, "\nAfter Final Permutation:", res)
-    print("-" * 100, "\n")
     # return the result
     return res

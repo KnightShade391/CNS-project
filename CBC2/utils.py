@@ -1,4 +1,4 @@
-from math import floor
+from math import floor, ceil
 from random import random
 
 # a method to split the text into equal n parts
@@ -44,6 +44,7 @@ def getDESKeys():
         2: "keykey11",
         3: "desdes12",
         4: "12345678",
-        5: "newdesyo"
+        5: "newdesyo",
+        6: "deskey12"
     }
-    return [keys[floor(random() * 10) % 6], keys[floor(random() * 10) % 6]]
+    return [keys[floor(random() * 10) % len(keys)], keys[ceil(random() * 10) % len(keys)]]
