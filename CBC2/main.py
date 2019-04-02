@@ -7,13 +7,18 @@ DECRYPT = "DECRYPT"
 initVect = "helloworldholayo"
 c, d, = "", ""
 
-print("-" * 60)
+print("-" * 100)
 print("MENU\n1-ENCRYPT \n2-DECRYPT \n3-Exit")
-print("-" * 60)
+print("-" * 100)
 while(True):
     ch = int(input("Enter your choice (1/2/3): "))
     if(ch == 1):
-        pltxt = input("Enter the message: ")
+        p = input("Enter the path to the plain text file: ")
+        try:
+            pltxt = open(p, "r").read()
+        except:
+            print("Invalid path!")
+            exit(0)
         k1, k2 = getDESKeys()
         k = open("keys.txt", "w")
         k.write(k1 + " " + k2)
@@ -29,7 +34,7 @@ while(True):
         k = open("keys.txt", "r")
         k1, k2 = k.readline().split()
         k.close()
-        ef = input("Enter the path where the cipher text file is present: ")
+        ef = input("Enter the path to the cipher text file: ")
         try:
             tr = open(ef, "rb")
             tr = tr.read()
@@ -45,7 +50,7 @@ while(True):
     else:
         print("Invalid choice!")
         exit(0)
-    print("-" * 60)
+    print("-" * 100)
 
 # pltxt = input("Enter a message: ")
 # # pltxt = ("a" * 1) + ("b" * 1)
